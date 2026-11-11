@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bedienungsanleitung – SLV Anonymisierer</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="help.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-in">
+    <a class="logo-link" href="/" aria-label="Zurück zur App">
+      <img src="logo-slv.png" alt="SLV – Sächsischer Lehrerverband im VBE" class="logo">
+    </a>
+    <div class="header-right">
+      <div class="toptabs">
+        <span class="toptab gray">Web-Version 2.0</span>
+        <span class="toptab green">Stand November 2026</span>
+      </div>
+      <nav class="mainnav">
+        <a class="tab" href="/">Zurück zur App</a>
+        <a class="tab" href="#drucken" id="printlink">Drucken / PDF</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<div class="titleband">
+  <div class="titleband-in"><h1>Bedienungsanleitung</h1></div>
+</div>
+
+<main class="help">
+
+<p class="lead">Der <strong>SLV Anonymisierer</strong> erkennt personenbezogene Daten in Dokumenten (Bescheide, Urteile, Schriftsätze …) und ersetzt sie durch Platzhalter wie <span class="ph">[NAME-1]</span> oder schwärzt sie. Die App läuft im Webbrowser – die gesamte Verarbeitung findet dabei ausschließlich auf Ihrem eigenen Gerät statt. Dokumente werden nicht hochgeladen.</p>
+
+<div class="card">
+  <h2>Inhalt</h2>
+  <ol class="toc">
+    <li><a href="#kurz">Das Wichtigste in Kürze</a></li>
+    <li><a href="#einrichtung">Voraussetzungen und Datenschutz</a></li>
+    <li><a href="#start">Öffnen und Schließen</a></li>
+    <li><a href="#anonymisieren">Dokument anonymisieren</a></li>
+    <li><a href="#platzhalter">Die Platzhalter</a></li>
+    <li><a href="#wiederherstellen">Originaldaten wiederherstellen</a></li>
+    <li><a href="#dateitypen">Hinweise zu den Dateitypen</a></li>
+    <li><a href="#hinweise">Wichtige Hinweise zur Nutzung</a></li>
+    <li><a href="#fehler">Fehlerbehebung</a></li>
+    <li><a href="#weitergabe">Weitergabe, Aktualisierung, Entfernen</a></li>
+  </ol>
+</div>
+
+<!-- ======================================================= -->
+<h2 class="sec" id="kurz">1 Das Wichtigste in Kürze</h2>
+<ol class="steps">
+  <li><strong>App öffnen</strong>Die Internetadresse der App im Browser aufrufen (Chrome, Edge, Firefox oder Safari).</li>
+  <li><strong>Dokument auswählen</strong>Datei in das grüne Feld ziehen (Word, PDF, Scan, Bild oder Text).</li>
+  <li><strong>Treffer prüfen</strong>Erkannte Stellen kontrollieren, falsche abwählen, fehlende ergänzen.</li>
+  <li><strong>Anonymisieren</strong>Anonymisiertes Dokument <em>und</em> Schlüsseldatei herunterladen.</li>
+  <li><strong>Ergebnis kontrollieren</strong>Das Ergebnis vor jeder Weitergabe stichprobenartig durchsehen. Keine automatische Erkennung ist vollständig.</li>
+  <li><strong>Fertig</strong>Browser-Tab schließen. Das Dokument wird dabei aus dem Arbeitsspeicher gelöscht.</li>
+</ol>
+
+<!-- ======================================================= -->
+<h2 class="sec" id="einrichtung">2 Voraussetzungen und Datenschutz</h2>
+
+<h3>Voraussetzungen</h3>
+<ul>
+  <li>Ein aktueller Browser: Chrome, Edge, Firefox oder Safari – auf Windows, macOS, Linux oder einem Tablet. Eine Installation ist nicht nötig.</li>
+  <li>Eine Internetverbindung, um die App zu öffnen. Beim <strong>ersten</strong> Öffnen lädt der Browser zusätzlich die KI-Namenserkennung (ca. 180 MB) und bei Bedarf die Texterkennung für Scans (ca. 15 MB). Beides speichert der Browser; danach geht es deutlich schneller.</li>
+  <li>Empfohlen: mindestens 8 GB Arbeitsspeicher. Auf älteren Geräten dauert die Analyse länger.</li>
+</ul>
+
+<h3>Wie die App mit Ihren Dokumenten umgeht</h3>
+<ul>
+  <li><strong>Keine Übertragung:</strong> Die App wird aus dem Internet geladen, arbeitet dann aber vollständig in Ihrem Browser. Dokumente, Trefferlisten und Schlüsseldateien werden nicht an einen Server gesendet.</li>
+  <li><strong>Keine Speicherung:</strong> Das Dokument liegt nur im Arbeitsspeicher dieses Browser-Tabs. Es wird gelöscht bei „Sitzung verwerfen“, nach 30 Minuten Inaktivität oder beim Schließen des Tabs.</li>
+  <li><strong>Was aus dem Internet geladen wird:</strong> Nur Programmbestandteile – die App selbst, das KI-Modell (von Hugging Face) und die Texterkennung (Tesseract, über den Dienst jsDelivr). Dabei werden keine Dokumentinhalte übermittelt.</li>
+</ul>
+
+<!-- ======================================================= -->
+<h2 class="sec" id="start">3 Öffnen und Schließen</h2>
+<h3>Öffnen</h3>
+<ol class="steps">
+  <li><strong>Adresse aufrufen</strong>Die Internetadresse der App im Browser öffnen. Tipp: als Lesezeichen speichern.</li>
+  <li><strong>Status prüfen</strong>Oben rechts zeigen die Reiter den Zustand: <em>KI: lädt … %</em> beim ersten Mal, danach <em>KI: bereit</em>. <em>OCR</em> wird erst bei der ersten Scan-Datei geladen. <em>Nur im Browser</em> bestätigt die lokale Verarbeitung.</li>
+</ol>
+<figure>
+  <img src="hilfe/bild1-start.png" alt="Startseite der App mit Dateiauswahl und Einstellungen">
+  <figcaption>Abb. 1: Startseite – oben Statusanzeigen und Navigation, darunter 1. Dokument auswählen und 2. Einstellungen. (Abbildung der Desktop-Version; die Statusanzeigen lauten in der Web-Version etwas anders.)</figcaption>
+</figure>
+<h3>Schließen</h3>
+<p>Schließen Sie einfach den Browser-Tab. Alle Dokumentdaten werden dabei aus dem Arbeitsspeicher gelöscht. Heruntergeladene Dateien bleiben in Ihrem Download-Ordner.</p>
+
+<!-- ======================================================= -->
+<h2 class="sec" id="anonymisieren">4 Dokument anonymisieren</h2>
+
+<h3>Schritt 1 – Dokument auswählen</h3>
+<p>Ziehen Sie die Datei in das grüne Feld oder klicken Sie darauf, um die Datei auszuwählen. Die Analyse beginnt sofort. Bei Scans und Bildern läuft zuerst die Texterkennung; das dauert je Seite einige Sekunden bis wenige Minuten.</p>
+<table class="t">
+  <tr><th>Dateityp</th><th>Hinweis</th></tr>
+  <tr><td>Word (<code>.docx</code>)</td><td>Formatierung bleibt erhalten. Alte <code>.doc</code>-Dateien vorher in Word als <code>.docx</code> speichern.</td></tr>
+  <tr><td>PDF mit Text</td><td>Der Originaltext wird dauerhaft entfernt (echte Schwärzung, nicht nur überdeckt).</td></tr>
+  <tr><td>PDF als Scan, Bilder (<code>.png</code>, <code>.jpg</code>, <code>.tif</code>, <code>.bmp</code>)</td><td>Texterkennung (OCR), danach werden die Stellen im Bild überdeckt.</td></tr>
+  <tr><td>Text (<code>.txt</code>)</td><td>Einfacher Text.</td></tr>
+</table>
+<p>Sehr große Dateien (über etwa 100 MB) können je nach Gerät den Arbeitsspeicher des Browsers überfordern. Kennwortgeschützte Dateien müssen vorher entsperrt werden.</p>
+
+<h3>Schritt 2 – Einstellungen</h3>
+<table class="t">
+  <tr><th>Einstellung</th><th>Bedeutung</th></tr>
+  <tr><td><strong>Platzhalter ersetzen</strong></td><td>Erkannte Daten werden durch Platzhalter wie <span class="ph">[NAME-1]</span> ersetzt. <strong>Umkehrbar</strong> bei Word und Text (siehe <a href="#wiederherstellen">Kapitel 6</a>).</td></tr>
+  <tr><td><strong>Schwärzen</strong></td><td>Schwarze Balken statt Platzhalter. <strong>Nicht umkehrbar.</strong></td></tr>
+  <tr><td><strong>Platzhalter nummerieren</strong></td><td>Empfohlen. Jede Person bzw. Angabe erhält überall dieselbe Nummer (<span class="ph">[NAME-1]</span>, <span class="ph">[NAME-2]</span> …), verschiedene Personen bleiben unterscheidbar. Ohne Nummerierung steht nur <span class="ph">[NAME]</span>; die Wiederherstellung funktioniert dann nur, solange die Reihenfolge im Dokument unverändert bleibt.</td></tr>
+  <tr><td><strong>Metadaten entfernen</strong></td><td>Löscht Autor, Titel und ähnliche Dokumenteigenschaften aus der Ausgabedatei.</td></tr>
+  <tr><td><strong>Passwort für Schlüsseldatei</strong></td><td>Optional, aber <strong>empfohlen</strong>: Die Schlüsseldatei enthält die Originaldaten und wird damit verschlüsselt. Ohne Passwort kann sie jeder öffnen.</td></tr>
+  <tr><td><strong>Zu erkennende Daten</strong></td><td>Hier schalten Sie einzelne Kategorien ein oder aus (z. B. „Schulen / Dienststellen“). Die Trefferliste aktualisiert sich sofort. „Persönliche Web-/Profil-Links“ ist standardmäßig aus.</td></tr>
+  <tr><td><strong>Eigene Begriffe</strong></td><td>Begriffe, die immer ersetzt werden sollen (z. B. ein Ortsteil, ein Spitzname, eine Gesundheitsangabe). Begriff eintragen, Platzhalter-Art wählen, „Hinzufügen“ klicken.</td></tr>
+</table>
+
+<h3>Schritt 3 – Treffer prüfen</h3>
+<p>Nach der Analyse erscheint links die Liste aller Treffer, nach Kategorien geordnet und mit der Anzahl der Vorkommen. Rechts sehen Sie das Dokument mit farbig markierten Treffern.</p>
+<ul>
+  <li><strong>Treffer abwählen:</strong> Häkchen in der Liste entfernen oder auf die Markierung in der Vorschau klicken. Der Treffer wird dann <em>an allen Stellen</em> nicht ersetzt. „alle“ / „keine“ schaltet die ganze Liste um.</li>
+  <li><strong>Fehlende Stelle ergänzen:</strong> Text in der Vorschau mit der Maus markieren, Platzhalter-Art wählen und auf „als Begriff hinzufügen“ klicken.</li>
+  <li>Bei langen Dokumenten zeigt die Vorschau nur den Anfang. Die Verarbeitung erfasst immer das gesamte Dokument.</li>
+</ul>
+<figure>
+  <img src="hilfe/bild2-treffer.png" alt="Trefferliste und Vorschau mit markierten Stellen">
+  <figcaption>Abb. 2: 3. Treffer prüfen – links die Trefferliste, rechts die Vorschau. Farbige Markierungen zeigen die erkannten Stellen.</figcaption>
+</figure>
+<div class="callout warn"><strong>Namen genau ansehen</strong>Namen sind der schwierigste Teil der Erkennung. Achten Sie besonders auf Namen ohne Anrede, auf Vornamen allein und auf ungewöhnliche oder fremdsprachige Namen.</div>
+
+<h3>Schritt 4 – Anonymisieren und herunterladen</h3>
+<p>Klicken Sie auf <strong>„Anonymisieren“</strong>. Danach erscheinen zwei Download-Schaltflächen:</p>
+<ul>
+  <li><strong>Anonymisiertes Dokument herunterladen</strong> – die Ausgabedatei, Name: <code>Originalname_anonymisiert.docx</code> (bzw. <code>.pdf</code>, <code>.txt</code>, <code>.png</code> …).</li>
+  <li><strong>Schlüsseldatei (.slvkey)</strong> – die Zuordnung Platzhalter ↔ Originaldaten, Name: <code>Originalname_schluessel.slvkey</code>. Sie wird für die Wiederherstellung benötigt.</li>
+</ul>
+<figure class="narrow">
+  <img src="hilfe/bild3-ergebnis.png" alt="Ergebnisbereich mit Download-Schaltflächen">
+  <figcaption>Abb. 3: Ergebnis – Download von anonymisiertem Dokument und Schlüsseldatei.</figcaption>
+</figure>
+<p>Mit <strong>„Sitzung verwerfen“</strong> löschen Sie das ausgewählte Dokument sofort aus dem Arbeitsspeicher. Das geschieht auch automatisch nach 30 Minuten Inaktivität oder wenn Sie den Tab schließen.</p>
+<div class="callout stop"><strong>Dateiname prüfen</strong>Der Name der Ausgabedatei übernimmt den Namen des Originals. Steht dort ein Name oder ein Aktenzeichen, benennen Sie die Datei vor der Weitergabe um.</div>
+
+<!-- ======================================================= -->
+<h2 class="sec" id="platzhalter">5 Die Platzhalter</h2>
+<table class="t">
+  <tr><th>Platzhalter</th><th>Ersetzt</th></tr>
+  <tr><td class="ph">[NAME]</td><td>Namen von Personen. Wird ein Name einmal erkannt, werden auch weitere Vorkommen (z. B. „Herr Müller“ nach „Max Müller“) ersetzt.</td></tr>
+  <tr><td class="ph">[ADRESSE]</td><td>Straße mit Hausnummer, Postleitzahl und Ort, Postfach, „wohnhaft in …“</td></tr>
+  <tr><td class="ph">[E-MAIL]</td><td>E-Mail-Adressen</td></tr>
+  <tr><td class="ph">[TELEFON]</td><td>Telefon-, Fax- und Mobilnummern</td></tr>
+  <tr><td class="ph">[GEBURTSDATUM]</td><td>Geburtsdaten (nur mit Hinweis wie „geb.“ oder „Geburtsdatum“; normale Daten wie das Bescheiddatum bleiben)</td></tr>
+  <tr><td class="ph">[FIRMA]</td><td>Firmennamen mit Rechtsform (GmbH, AG, e. V., KG, UG …)</td></tr>
+  <tr><td class="ph">[BANKDATEN]</td><td>IBAN (mit Prüfsumme), BIC, Kontonummer, Bankleitzahl</td></tr>
+  <tr><td class="ph">[ID]</td><td>Steuernummer, Steuer-ID, USt-IdNr., Sozialversicherungsnummer, Ausweis-, Kunden-, Vertrags- und ähnliche Nummern</td></tr>
+  <tr><td class="ph">[MGNR]</td><td>Mitgliedsnummer</td></tr>
+  <tr><td class="ph">[AKTENZEICHEN]</td><td>Aktenzeichen und Geschäftszeichen (Gerichts- und Behördenformate)</td></tr>
+  <tr><td class="ph">[PERSONALNR]</td><td>Personalnummer, Dienstnummer</td></tr>
+  <tr><td class="ph">[SCHULE]</td><td>Schulen und Dienststellen (z. B. „Gymnasium Radebeul“) – in Verfahren mit Lehrkräften oft stark identifizierend</td></tr>
+  <tr><td class="ph">[GEBURTSORT]</td><td>Geburtsort</td></tr>
+  <tr><td class="ph">[KFZ]</td><td>Kfz-Kennzeichen (mit Hinweis wie „Kennzeichen“)</td></tr>
+  <tr><td class="ph">[IP]</td><td>IP-Adressen</td></tr>
+  <tr><td class="ph">[URL]</td><td>Web- und Profil-Links (standardmäßig ausgeschaltet)</td></tr>
+  <tr><td class="ph">[MANUELL]</td><td>Ihre eigenen Begriffe (oder jede andere gewählte Art)</td></tr>
+</table>
+
+<!-- ======================================================= -->
+<h2 class="sec" id="wiederherstellen">6 Originaldaten wiederherstellen</h2>
+<p>Möglich bei <strong>Word- und Textdateien</strong>, die im Modus „Platzhalter ersetzen“ anonymisiert wurden. Bei PDF und Bildern ist die Anonymisierung endgültig; hier bleibt das Originaldokument maßgeblich.</p>
+<ol class="steps">
+  <li><strong>Reiter „Wiederherstellen“ öffnen</strong>Oben in der Navigation.</li>
+  <li><strong>Dateien auswählen</strong>Das (ggf. bearbeitete) anonymisierte Dokument und die zugehörige Schlüsseldatei <code>.slvkey</code>.</li>
+  <li><strong>Passwort eingeben</strong>Falls Sie beim Anonymisieren eines vergeben haben.</li>
+  <li><strong>„Wiederherstellen“ klicken</strong>Die Datei <code>Originalname_wiederhergestellt.docx</code> wird heruntergeladen.</li>
+</ol>
+<figure class="narrow">
+  <img src="hilfe/bild4-wiederherstellen.png" alt="Reiter Wiederherstellen">
+  <figcaption>Abb. 4: Wiederherstellen – anonymisiertes Dokument, Schlüsseldatei und Passwort.</figcaption>
+</figure>
+<div class="callout warn"><strong>Voraussetzungen für die Wiederherstellung</strong>
+  <p>Die Platzhalter im Dokument dürfen nicht verändert werden: Schreibweise, eckige Klammern und Nummer (z. B. <span class="ph">[NAME-1]</span>) müssen genau erhalten bleiben. Der übrige Text darf bearbeitet werden.</p>
+  <p>Die Schlüsseldatei muss zu genau diesem Anonymisierungsvorgang gehören. Bei falschem Passwort erscheint eine Fehlermeldung. <strong>Ein vergessenes Passwort lässt sich nicht zurücksetzen.</strong></p>
+</div>
+
+<!-- ======================================================= -->
+<h2 class="sec" id="dateitypen">7 Hinweise zu den Dateitypen</h2>
+<h3>Word</h3>
+<ul>
+  <li>Ersetzt wird im gesamten Dokument: Text, Tabellen, Kopf- und Fußzeilen, Fuß- und Endnoten, Textfelder, Kommentare.</li>
+  <li>Schrift, Größe, Fett/Kursiv und Absatzformate bleiben erhalten. Der Platzhalter übernimmt die Formatierung des ersten ersetzten Zeichens.</li>
+  <li>Nachverfolgte Änderungen und Kommentare vorher annehmen bzw. entfernen.</li>
+  <li><strong>In Word eingebettete Bilder werden nicht per OCR bearbeitet.</strong> Enthalten sie Personendaten, das Bild separat anonymisieren oder entfernen.</li>
+</ul>
+<h3>PDF</h3>
+<ul>
+  <li>Seiten mit Text: Die Treffer werden dauerhaft aus dem PDF entfernt und durch Platzhalter bzw. schwarze Balken ersetzt.</li>
+  <li>Seiten ohne Textebene (Scans): Texterkennung, danach werden die Stellen im Seitenbild überdeckt. Diese Seiten sind im Ergebnis Bilder und nicht durchsuchbar. Ein PDF kann beide Arten gemischt enthalten.</li>
+  <li>Die Dokumenteigenschaften (Autor, Titel …) werden entfernt.</li>
+</ul>
+<h3>Scans und Bilder</h3>
+<ul>
+  <li>Die Trefferquote hängt von der Qualität des Scans ab. Gerade, kontrastreiche Vorlagen mit mindestens etwa 200–300 dpi funktionieren am besten. Handschrift wird nicht zuverlässig erkannt.</li>
+  <li>Platzhalter werden in das Bild geschrieben; ist der Platzhalter länger als der Originaltext, erscheint die Schrift klein.</li>
+  <li>Kameradaten (EXIF) werden nicht in die Ausgabedatei übernommen.</li>
+</ul>
+
+<!-- ======================================================= -->
+<h2 class="sec" id="hinweise">8 Wichtige Hinweise zur Nutzung</h2>
+<div class="callout stop"><strong>Keine automatische Erkennung ist vollständig</strong>
+  <p>Kontrollieren Sie jedes Ergebnis vor einer Weitergabe stichprobenartig, am besten durch Suche nach den Namen der Beteiligten. Besonders heikel sind seltene oder fremdsprachige Namen, Vornamen allein, indirekte Identifizierung (z. B. „die Schulleiterin der Grundschule im Ortsteil X“), schlechte Scans und Handschrift.</p>
+  <p>Gesundheits-, Straf- und ähnlich sensible Angaben im Fließtext werden <strong>nicht</strong> automatisch erkannt. Tragen Sie solche Begriffe als „Eigene Begriffe“ ein.</p>
+</div>
+<ul>
+  <li><strong>Pseudonymisierung oder Anonymisierung:</strong> Solange eine Schlüsseldatei existiert, ist das Ergebnis im Sinne der DSGVO regelmäßig eine <em>Pseudonymisierung</em> (Art. 4 Nr. 5 DSGVO). Die Daten bleiben für den personenbezogen, der den Schlüssel hat. Die rechtliche Einordnung im Einzelfall nehmen Sie selbst vor.</li>
+  <li><strong>Schlüsseldatei:</strong> Sie enthält die Originaldaten. Bewahren Sie sie getrennt vom anonymisierten Dokument auf, vergeben Sie ein Passwort und geben Sie sie nicht mit weiter.</li>
+  <li><strong>Heruntergeladene Dateien:</strong> Sie liegen im Download-Ordner Ihres Browsers. Löschen Sie Zwischenstände und nicht mehr benötigte Dateien (auch aus dem Papierkorb).</li>
+  <li><strong>Datenschutz der App:</strong> Die Verarbeitung läuft vollständig in Ihrem Browser. Dokumentinhalte werden weder hochgeladen noch auf der Festplatte gespeichert; Sitzungsdaten werden nach 30 Minuten Inaktivität gelöscht.</li>
+  <li><strong>Schlüsseldateien der Desktop-Version</strong> funktionieren auch in der Web-Version und umgekehrt.</li>
+</ul>
+
+<!-- ======================================================= -->
+<h2 class="sec" id="fehler">9 Fehlerbehebung</h2>
+<table class="t">
+  <tr><th>Meldung / Problem</th><th>Ursache und Lösung</th></tr>
+  <tr><td>Reiter zeigt lange „KI: lädt …“</td><td>Beim ersten Öffnen werden ca. 180 MB geladen; das kann bei langsamer Verbindung einige Minuten dauern. Sie können währenddessen schon ein Dokument auswählen – die Analyse wartet dann auf das Modell.</td></tr>
+  <tr><td>Reiter zeigt „KI: nicht verfügbar“ bzw. Hinweis „nur über Muster erkannt“</td><td>Das KI-Modell konnte nicht geladen werden (keine Internetverbindung, Firmen-Proxy oder Firewall blockiert huggingface.co). Namen werden dann deutlich schlechter erkannt. Seite neu laden oder in einem anderen Netz versuchen.</td></tr>
+  <tr><td>Scan wird nicht gelesen / „Datei konnte nicht gelesen werden“ bei Bildern</td><td>Die Texterkennung wird beim ersten Scan aus dem Internet geladen (cdn.jsdelivr.net). Internetverbindung prüfen und erneut versuchen.</td></tr>
+  <tr><td>„Sitzung abgelaufen“</td><td>Nach 30 Minuten Inaktivität werden Daten gelöscht. Datei erneut auswählen.</td></tr>
+  <tr><td>Die Seite reagiert langsam oder stürzt ab</td><td>Sehr große oder viele Seiten lange Scans brauchen viel Arbeitsspeicher. Andere Tabs schließen oder das Dokument in kleinere Teile aufteilen.</td></tr>
+  <tr><td>„Dateityp nicht unterstützt“ / „Datei konnte nicht gelesen werden“</td><td>Nur <code>.docx</code>, <code>.pdf</code>, <code>.txt</code> und gängige Bildformate werden verarbeitet. <code>.doc</code> zuerst in Word als <code>.docx</code> speichern. Kennwortgeschützte oder beschädigte Dateien vorher öffnen und neu speichern.</td></tr>
+  <tr><td>Passwort falsch bei der Wiederherstellung</td><td>Passwort genau eingeben (Groß-/Kleinschreibung). Es gibt keine Möglichkeit, ein vergessenes Passwort zurückzusetzen.</td></tr>
+  <tr><td>Zu viele oder zu wenige Treffer</td><td>In der Trefferliste Häkchen entfernen bzw. fehlende Stellen als „Eigene Begriffe“ ergänzen; Kategorien ein- oder ausschalten.</td></tr>
+</table>
+
+<!-- ======================================================= -->
+<h2 class="sec" id="weitergabe">10 Weitergabe, Aktualisierung, Entfernen</h2>
+<h3>Weitergabe</h3>
+<p>Geben Sie einfach die Internetadresse der App weiter. Auf anderen Geräten ist nichts zu installieren.</p>
+<h3>Aktualisieren</h3>
+<p>Neue Versionen stehen automatisch zur Verfügung, sobald sie veröffentlicht sind. Gegebenenfalls die Seite einmal neu laden.</p>
+<h3>Gespeicherte Modelle entfernen</h3>
+<p>Das KI-Modell und die Texterkennung liegen im Speicher des Browsers. Sie lassen sich über die Browser-Einstellungen („Websitedaten löschen“ für die Adresse der App) entfernen und werden beim nächsten Öffnen neu geladen.</p>
+
+<p class="docfoot">SLV Anonymisierer · Bedienungsanleitung · Web-Version 2.0 · Stand: November 2026 · Sächsischer Lehrerverband e. V.</p>
+</main>
+<script src="hilfe.js"></script>
+</body>
+</html>

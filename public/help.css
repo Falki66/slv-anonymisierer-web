@@ -1,0 +1,59 @@
+/* Zusatz-Stile für die Bedienungsanleitung (ergänzt style.css) */
+.help { max-width: 980px; }
+.help h2.sec { font-size: 1.45rem; margin: 38px 0 12px; padding-bottom: 6px; border-bottom: 2px solid var(--slv-green-light); color: var(--slv-green-dark); display: block; }
+.help h3 { margin: 24px 0 8px; font-size: 1.1rem; color: var(--slv-green-dark); }
+.help p, .help li { max-width: 78ch; }
+.help ul, .help ol { padding-left: 1.3rem; }
+.help li { margin: 4px 0; }
+.help code, .help kbd { background: #eef3f0; border: 1px solid var(--line); border-radius: 3px; padding: 0 5px; font-family: Consolas, "Cascadia Mono", monospace; font-size: .9em; }
+.help .ph { font-family: Consolas, "Cascadia Mono", monospace; font-weight: 700; color: var(--slv-green-dark); white-space: nowrap; }
+
+.toc { columns: 2; column-gap: 32px; margin: 0; padding-left: 1.3rem; }
+.toc li { break-inside: avoid; }
+.toc a { color: var(--slv-green-dark); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+.steps { list-style: none; counter-reset: step; padding-left: 0; }
+.steps > li { counter-increment: step; position: relative; padding: 2px 0 10px 44px; margin: 0; max-width: none; }
+.steps > li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--slv-green); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.steps > li > strong:first-child { display: block; }
+
+.callout { border-left: 5px solid var(--slv-green); background: var(--slv-green-tint); padding: 10px 16px; margin: 14px 0; border-radius: 0 4px 4px 0; max-width: none; }
+.callout.warn { border-left-color: #c98a00; background: #fff7e0; color: #5c3d00; }
+.callout.stop { border-left-color: #b3261e; background: #fdecea; color: #7a1a14; }
+.callout > strong:first-child { display: block; margin-bottom: 2px; }
+.callout p { margin: 4px 0; max-width: none; }
+
+table.t { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .94rem; background: #fff; }
+table.t th { background: var(--slv-green); color: #fff; text-align: left; padding: 7px 10px; font-weight: 600; }
+table.t td { border-bottom: 1px solid var(--line); padding: 7px 10px; vertical-align: top; }
+table.t tr:nth-child(even) td { background: #f7faf8; }
+
+figure { margin: 16px 0; }
+figure img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; display: block; background: #fff; }
+figure.narrow img { max-width: 760px; }
+figcaption { color: var(--muted); font-size: .86rem; margin-top: 5px; }
+
+.docfoot { margin-top: 40px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+a.tab { text-decoration: none; display: inline-block; }
+
+@media (max-width: 700px) { .toc { columns: 1; } }
+
+/* ---------- Druck / PDF ---------- */
+@media print {
+  @page { size: A4; margin: 14mm 14mm 16mm; }
+  body { background: #fff; font-size: 10.5pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .noprint, .mainnav, .toptabs { display: none !important; }
+  .header-in { min-height: 0; padding-bottom: 8px; }
+  .logo { height: 70px; }
+  .titleband { height: 100px; }
+  .titleband-in { padding-bottom: 14px; }
+  .titleband h1 { font-size: 1.7rem; }
+  main { padding: 10px 0 0; max-width: none; }
+  .help h2.sec { break-after: avoid; margin-top: 22px; font-size: 1.25rem; }
+  .help h3 { break-after: avoid; }
+  figure, .callout, table.t tr, .card { break-inside: avoid; }
+  .steps > li { break-inside: avoid; }
+  figure img { max-height: 120mm; width: auto; max-width: 100%; }
+  .card { border-top-width: 3px; }
+}

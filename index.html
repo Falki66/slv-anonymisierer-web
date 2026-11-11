@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>SLV Anonymisierer</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-in">
+    <a class="logo-link" href="/" aria-label="SLV Anonymisierer – Startseite">
+      <img src="/logo-slv.png" alt="SLV – Sächsischer Lehrerverband im VBE" class="logo" id="logo">
+    </a>
+    <div class="header-right">
+      <div class="toptabs">
+        <span class="toptab gray" id="badgeOcr" title="Texterkennung für Scans und Bilder (Tesseract). Wird bei Bedarf geladen.">OCR: bei Bedarf</span>
+        <span class="toptab gray" id="badgeNer" title="KI-Namenserkennung (BERT). Wird beim ersten Mal geladen und dann im Browser gespeichert.">KI: wird geladen …</span>
+        <span class="toptab green" title="Dokumente werden ausschließlich in diesem Browser verarbeitet und nicht hochgeladen.">Nur im Browser</span>
+      </div>
+      <nav class="mainnav" role="tablist">
+        <button class="tab active" data-tab="anon" role="tab">Anonymisieren</button>
+        <button class="tab" data-tab="restore" role="tab">Wiederherstellen</button>
+        <a class="tab" href="/hilfe.html" target="_blank" rel="noopener">Hilfe</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<div class="titleband">
+  <div class="titleband-in"><h1>Dokumente anonymisieren</h1></div>
+</div>
+
+<main>
+  <p class="lead">Personenbezogene Daten werden erkannt und durch standardisierte Platzhalter ersetzt oder geschwärzt.
+     Die Verarbeitung findet vollständig in Ihrem Browser statt – Dokumente werden nicht hochgeladen und nirgends gespeichert.</p>
+
+  <section id="tab-anon" class="panel">
+    <div class="card">
+      <h2><span class="step">1</span> Dokument auswählen</h2>
+      <label class="drop" id="drop" for="file">
+        <input type="file" id="file" accept=".docx,.pdf,.txt,.md,.png,.jpg,.jpeg,.tif,.tiff,.bmp" hidden>
+        <strong>Datei hierher ziehen</strong> oder klicken zum Auswählen
+        <small>Word (.docx) · PDF (auch Scans) · Text (.txt) · Bilder (.png, .jpg, .tif)</small>
+      </label>
+      <div id="fileinfo" class="hint"></div>
+      <div id="busy" class="busy" hidden><span class="spinner"></span> <span id="busyText">Dokument wird analysiert …</span>
+        <progress id="busyBar" max="1" hidden></progress></div>
+      <div id="err" class="alert err" hidden></div>
+      <div id="nerWarn" class="alert warn" hidden></div>
+    </div>
+
+    <div class="card" id="settings">
+      <h2><span class="step">2</span> Einstellungen</h2>
+      <div class="grid2">
+        <fieldset>
+          <legend>Ausgabe</legend>
+          <label class="opt"><input type="radio" name="mode" value="platzhalter" checked> <span><strong>Platzhalter</strong> ersetzen (z. B. [NAME-1]) – umkehrbar bei Word/Text</span></label>
+          <label class="opt"><input type="radio" name="mode" value="schwaerzen"> <span><strong>Schwärzen</strong> (schwarze Balken, nicht umkehrbar)</span></label>
+          <label class="opt"><input type="checkbox" id="numbered" checked> <span>Platzhalter nummerieren ([NAME-1], [NAME-2] …) – unterscheidet Personen</span></label>
+          <label class="opt"><input type="checkbox" id="strip" checked> <span>Dokument-Metadaten entfernen (Autor, Titel …)</span></label>
+          <label class="field">Passwort für Schlüsseldatei (optional, empfohlen)
+            <input type="password" id="password" autocomplete="new-password" placeholder="leer = unverschlüsselt">
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Zu erkennende Daten</legend>
+          <div id="cats" class="cats"></div>
+        </fieldset>
+      </div>
+      <fieldset class="extras">
+        <legend>Eigene Begriffe (immer ersetzen)</legend>
+        <div class="row">
+          <input type="text" id="extraTerm" placeholder="z. B. Aktenbezeichnung, Spitzname, Ortsteil …">
+          <select id="extraCat"></select>
+          <button class="btn secondary" id="addExtra" type="button">Hinzufügen</button>
+        </div>
+        <ul id="extraList" class="chips"></ul>
+      </fieldset>
+    </div>
+
+    <div class="card" id="review" hidden>
+      <h2><span class="step">3</span> Treffer prüfen</h2>
+      <p class="hint">Entfernen Sie das Häkchen, wenn ein Treffer <em>nicht</em> ersetzt werden soll. Ein Klick auf eine Markierung in der Vorschau schaltet den Treffer ebenfalls um.
+         Text in der Vorschau markieren, um fehlende Stellen hinzuzufügen.</p>
+      <div class="review-grid">
+        <div>
+          <div class="list-head"><strong id="findCount">0 Treffer</strong>
+            <span><button class="link" id="selAll" type="button">alle</button> · <button class="link" id="selNone" type="button">keine</button></span></div>
+          <div id="findings" class="findings"></div>
+        </div>
+        <div>
+          <div class="list-head"><strong>Vorschau</strong>
+            <span id="selTools" class="seltools" hidden>
+              <span id="selText" class="seltext"></span>
+              <select id="selCat"></select>
+              <button class="btn small" id="selAdd" type="button">als Begriff hinzufügen</button>
+            </span>
+          </div>
+          <div id="preview" class="preview" tabindex="0"></div>
+          <div id="truncNote" class="hint" hidden>Die Vorschau zeigt nur den Anfang; die Verarbeitung erfasst das gesamte Dokument.</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="process" type="button">Anonymisieren</button>
+        <button class="btn ghost" id="clear" type="button">Sitzung verwerfen</button>
+      </div>
+    </div>
+
+    <div class="card result" id="result" hidden>
+      <h2><span class="step ok">✓</span> Fertig</h2>
+      <p id="resultText"></p>
+      <div class="actions">
+        <a class="btn primary" id="dlDoc" href="#" download>Anonymisiertes Dokument herunterladen</a>
+        <a class="btn secondary" id="dlKey" href="#" download>Schlüsseldatei (.slvkey)</a>
+      </div>
+      <div id="resultNote" class="alert info" hidden></div>
+      <div class="alert warn">Die Schlüsseldatei enthält die Originaldaten. Bewahren Sie sie getrennt vom anonymisierten Dokument und geschützt auf.
+        Prüfen Sie das Ergebnis vor einer Weitergabe stichprobenartig – eine automatische Erkennung kann einzelne Angaben übersehen.</div>
+    </div>
+  </section>
+
+  <!-- ================= Wiederherstellen ================= -->
+  <section id="tab-restore" class="panel" hidden>
+    <div class="card">
+      <h2>Platzhalter durch Originaldaten ersetzen</h2>
+      <p class="hint">Möglich für Word (.docx) und Textdateien, die mit dieser App anonymisiert wurden (Modus „Platzhalter“).
+         Schlüsseldateien der Desktop-Version funktionieren ebenfalls.</p>
+      <div class="grid2">
+        <label class="field">Anonymisiertes Dokument
+          <input type="file" id="rFile" accept=".docx,.txt,.md,.csv,.log"></label>
+        <label class="field">Schlüsseldatei (.slvkey)
+          <input type="file" id="rKey" accept=".slvkey,.json"></label>
+      </div>
+      <label class="field">Passwort (falls vergeben)
+        <input type="password" id="rPass" autocomplete="off"></label>
+      <div class="actions"><button class="btn primary" id="restore" type="button">Wiederherstellen</button></div>
+      <div id="rBusy" class="busy" hidden><span class="spinner"></span> Wird verarbeitet …</div>
+      <div id="rErr" class="alert err" hidden></div>
+      <div id="rOk" class="alert ok" hidden>Das wiederhergestellte Dokument wurde heruntergeladen.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>SLV Anonymisierer · Verarbeitung ausschließlich in diesem Browser · keine Telemetrie</span>
+  <span>Dokumentdaten werden nach 30 Minuten Inaktivität oder beim Schließen des Tabs gelöscht.</span>
+</footer>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
