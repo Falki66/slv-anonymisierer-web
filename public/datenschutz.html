@@ -28,8 +28,6 @@
 </div>
 
 <main class="help">
-<!-- VORLAGE: Die technischen Angaben beschreiben die App, wie sie gebaut ist.
-     Alle Stellen mit class="todo" vom SLV bzw. dessen Datenschutzbeauftragten ergänzen und prüfen lassen. -->
 
 <div class="callout"><strong>Das Wichtigste in Kürze</strong>
   <p>Ihre Dokumente werden <strong>ausschließlich in Ihrem Browser</strong> verarbeitet. Sie werden weder an uns noch an Dritte übertragen und nirgends gespeichert. Beim Aufruf der App werden lediglich Programmdateien aus dem Internet geladen; dabei sehen die ausliefernden Server – wie bei jeder Website – Ihre IP-Adresse.</p>
@@ -44,9 +42,6 @@
   E-Mail: <a href="mailto:kontakt@slv-gewerkschaft.de">kontakt@slv-gewerkschaft.de</a>
 </p>
 <p>Weitere Informationen zum Datenschutz beim SLV: <a href="https://slv-gewerkschaft.de/datenschutz/">slv-gewerkschaft.de/datenschutz</a></p>
-<h3>Datenschutzbeauftragte(r)</h3>
-<p><span class="todo">Auf der SLV-Homepage nicht genannt – falls ein(e) Datenschutzbeauftragte(r) benannt ist, hier Name und Kontakt ergänzen; sonst diesen Abschnitt löschen.</span></p>
-
 <h2 class="sec">2 Verarbeitung Ihrer Dokumente</h2>
 <p>Dokumente, die Sie in der App auswählen, werden vollständig auf Ihrem Gerät im Browser verarbeitet: Texterkennung, Namenserkennung, Anonymisierung und Erzeugung der Schlüsseldatei. Dokumentinhalte, Trefferlisten, Passwörter und Schlüsseldateien werden <strong>nicht übertragen</strong> und nicht dauerhaft gespeichert.</p>
 <ul>
@@ -59,10 +54,8 @@
 <h2 class="sec">3 Bereitstellung der App (Hosting)</h2>
 <p>Die App wird über <strong>Netlify</strong> bereitgestellt (Netlify, Inc., San Francisco, USA). Beim Aufruf verarbeitet Netlify technisch notwendige Zugriffsdaten: IP-Adresse, Datum und Uhrzeit, aufgerufene Datei, übertragene Datenmenge, Browser und Betriebssystem (Server-Logfiles). Dies dient der Auslieferung und Sicherheit der Website.</p>
 <ul>
-  <li>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und funktionsfähigen Angebot). <span class="todo">Rechtsgrundlage prüfen lassen.</span></li>
-  <li>Auftragsverarbeitung: <span class="todo">Auftragsverarbeitungsvertrag (DPA) mit Netlify abschließen/prüfen.</span></li>
-  <li>Drittlandübermittlung (USA): <span class="todo">Grundlage prüfen, z. B. Zertifizierung nach dem EU-US Data Privacy Framework bzw. Standardvertragsklauseln.</span></li>
-  <li>Speicherdauer der Logfiles: <span class="todo">laut Netlify-Bedingungen ergänzen.</span></li>
+  <li>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und funktionsfähigen Angebot).</li>
+  <li>Netlify hat seinen Sitz in den USA; eine Verarbeitung der Zugriffsdaten in den USA ist daher möglich.</li>
 </ul>
 
 <h2 class="sec">4 Nachgeladene Programmbestandteile</h2>
@@ -73,10 +66,9 @@
   <tr><td><strong>jsDelivr</strong> (öffentliches Content-Delivery-Netzwerk), Server <code>cdn.jsdelivr.net</code></td><td>Texterkennung (Tesseract) und deutsche Sprachdaten</td><td>erst bei der ersten Scan- oder Bilddatei</td></tr>
 </table>
 <ul>
-  <li>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (Bereitstellung der Erkennungsfunktionen). <span class="todo">Prüfen lassen.</span></li>
-  <li>Drittlandübermittlung: <span class="todo">Für beide Anbieter Grundlage der Übermittlung in die USA bzw. den Betreiber von jsDelivr prüfen und ergänzen.</span></li>
+  <li>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (Bereitstellung der Erkennungsfunktionen).</li>
+  <li>Die Anbieter können Zugriffsdaten auch außerhalb der EU, insbesondere in den USA, verarbeiten.</li>
 </ul>
-<div class="callout"><strong>Ohne Drittanbieter möglich</strong>Auf Wunsch lassen sich KI-Modell und Texterkennung auch direkt über unsere eigene Adresse ausliefern; dann entfallen die Abrufe bei Hugging Face und jsDelivr. <span class="todo">Entscheidung SLV.</span></div>
 
 <h2 class="sec">5 Speicherung im Browser</h2>
 <p>Die App setzt <strong>keine Cookies</strong> und verwendet <strong>keine Analyse- oder Tracking-Dienste</strong>. Damit das KI-Modell und die Texterkennung nicht bei jedem Aufruf neu geladen werden müssen, legt Ihr Browser diese Programmdateien in seinem lokalen Speicher ab (Cache Storage bzw. IndexedDB). Diese Dateien enthalten keine personenbezogenen Daten. Sie können sie jederzeit über die Browser-Einstellungen („Websitedaten löschen“) entfernen. Rechtsgrundlage: § 25 Abs. 2 Nr. 2 TDDDG (unbedingt erforderlich für den gewünschten Dienst).</p>
