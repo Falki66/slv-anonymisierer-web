@@ -57,3 +57,6 @@ a.tab { text-decoration: none; display: inline-block; }
   figure img { max-height: 120mm; width: auto; max-width: 100%; }
   .card { border-top-width: 3px; }
 }
+
+/* Noch zu ergänzende Angaben in den Vorlagen (Impressum, Datenschutz) */
+.todo { background: #fff3b0; outline: 1px dashed #c98a00; padding: 0 3px; }

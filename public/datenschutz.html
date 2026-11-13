@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutz – SLV Anonymisierer</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="help.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-in">
+    <a class="logo-link" href="/" aria-label="Zurück zur App">
+      <img src="logo-slv.png" alt="SLV – Sächsischer Lehrerverband im VBE" class="logo">
+    </a>
+    <div class="header-right">
+      <div class="toptabs"><span class="toptab green">Nur im Browser</span></div>
+      <nav class="mainnav">
+        <a class="tab" href="/">Zurück zur App</a>
+        <a class="tab" href="/impressum.html">Impressum</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<div class="titleband">
+  <div class="titleband-in"><h1>Datenschutzhinweise</h1></div>
+</div>
+
+<main class="help">
+<!-- VORLAGE: Die technischen Angaben beschreiben die App, wie sie gebaut ist.
+     Alle Stellen mit class="todo" vom SLV bzw. dessen Datenschutzbeauftragten ergänzen und prüfen lassen. -->
+
+<div class="callout"><strong>Das Wichtigste in Kürze</strong>
+  <p>Ihre Dokumente werden <strong>ausschließlich in Ihrem Browser</strong> verarbeitet. Sie werden weder an uns noch an Dritte übertragen und nirgends gespeichert. Beim Aufruf der App werden lediglich Programmdateien aus dem Internet geladen; dabei sehen die ausliefernden Server – wie bei jeder Website – Ihre IP-Adresse.</p>
+</div>
+
+<h2 class="sec">1 Verantwortlicher</h2>
+<p>
+  <span class="todo">Sächsischer Lehrerverband e. V. (SLV)</span><br>
+  <span class="todo">Anschrift</span><br>
+  E-Mail: <span class="todo">E-Mail-Adresse</span>
+</p>
+<h3>Datenschutzbeauftragte(r)</h3>
+<p><span class="todo">Name bzw. Stelle und Kontakt der/des Datenschutzbeauftragten (falls benannt)</span></p>
+
+<h2 class="sec">2 Verarbeitung Ihrer Dokumente</h2>
+<p>Dokumente, die Sie in der App auswählen, werden vollständig auf Ihrem Gerät im Browser verarbeitet: Texterkennung, Namenserkennung, Anonymisierung und Erzeugung der Schlüsseldatei. Dokumentinhalte, Trefferlisten, Passwörter und Schlüsseldateien werden <strong>nicht übertragen</strong> und nicht dauerhaft gespeichert.</p>
+<ul>
+  <li>Das Dokument liegt nur im Arbeitsspeicher des geöffneten Browser-Tabs. Es wird gelöscht bei „Sitzung verwerfen“, nach 30 Minuten Inaktivität oder beim Schließen des Tabs.</li>
+  <li>Ergebnisse (anonymisiertes Dokument, Schlüsseldatei) speichert Ihr Browser nur, wenn Sie sie herunterladen – im Download-Ordner Ihres Geräts.</li>
+  <li>Eine technische Sicherheitsrichtlinie (Content-Security-Policy) beschränkt die Seite auf Verbindungen zu den unten genannten Servern; andere Ziele werden vom Browser blockiert.</li>
+</ul>
+<p>Da wir keinen Zugriff auf Ihre Dokumente erhalten, findet insoweit keine Verarbeitung durch uns statt.</p>
+
+<h2 class="sec">3 Bereitstellung der App (Hosting)</h2>
+<p>Die App wird über <strong>Netlify</strong> bereitgestellt (Netlify, Inc., San Francisco, USA). Beim Aufruf verarbeitet Netlify technisch notwendige Zugriffsdaten: IP-Adresse, Datum und Uhrzeit, aufgerufene Datei, übertragene Datenmenge, Browser und Betriebssystem (Server-Logfiles). Dies dient der Auslieferung und Sicherheit der Website.</p>
+<ul>
+  <li>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und funktionsfähigen Angebot). <span class="todo">Rechtsgrundlage prüfen lassen.</span></li>
+  <li>Auftragsverarbeitung: <span class="todo">Auftragsverarbeitungsvertrag (DPA) mit Netlify abschließen/prüfen.</span></li>
+  <li>Drittlandübermittlung (USA): <span class="todo">Grundlage prüfen, z. B. Zertifizierung nach dem EU-US Data Privacy Framework bzw. Standardvertragsklauseln.</span></li>
+  <li>Speicherdauer der Logfiles: <span class="todo">laut Netlify-Bedingungen ergänzen.</span></li>
+</ul>
+
+<h2 class="sec">4 Nachgeladene Programmbestandteile</h2>
+<p>Für einzelne Funktionen lädt Ihr Browser Programmdateien von weiteren Anbietern. Dabei werden <strong>keine Dokumentinhalte</strong> übertragen, wohl aber – technisch bedingt – Ihre IP-Adresse, Zeitpunkt und Browserangaben an den jeweiligen Server.</p>
+<table class="t">
+  <tr><th>Anbieter</th><th>Wofür</th><th>Wann</th></tr>
+  <tr><td><strong>Hugging Face</strong> (Hugging Face, Inc., New York, USA), Server <code>huggingface.co</code> und <code>*.hf.co</code></td><td>KI-Modell zur Namenserkennung (ca. 180 MB)</td><td>beim ersten Aufruf; danach aus dem Browser-Speicher</td></tr>
+  <tr><td><strong>jsDelivr</strong> (öffentliches Content-Delivery-Netzwerk), Server <code>cdn.jsdelivr.net</code></td><td>Texterkennung (Tesseract) und deutsche Sprachdaten</td><td>erst bei der ersten Scan- oder Bilddatei</td></tr>
+</table>
+<ul>
+  <li>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (Bereitstellung der Erkennungsfunktionen). <span class="todo">Prüfen lassen.</span></li>
+  <li>Drittlandübermittlung: <span class="todo">Für beide Anbieter Grundlage der Übermittlung in die USA bzw. den Betreiber von jsDelivr prüfen und ergänzen.</span></li>
+</ul>
+<div class="callout"><strong>Ohne Drittanbieter möglich</strong>Auf Wunsch lassen sich KI-Modell und Texterkennung auch direkt über unsere eigene Adresse ausliefern; dann entfallen die Abrufe bei Hugging Face und jsDelivr. <span class="todo">Entscheidung SLV.</span></div>
+
+<h2 class="sec">5 Speicherung im Browser</h2>
+<p>Die App setzt <strong>keine Cookies</strong> und verwendet <strong>keine Analyse- oder Tracking-Dienste</strong>. Damit das KI-Modell und die Texterkennung nicht bei jedem Aufruf neu geladen werden müssen, legt Ihr Browser diese Programmdateien in seinem lokalen Speicher ab (Cache Storage bzw. IndexedDB). Diese Dateien enthalten keine personenbezogenen Daten. Sie können sie jederzeit über die Browser-Einstellungen („Websitedaten löschen“) entfernen. Rechtsgrundlage: § 25 Abs. 2 Nr. 2 TDDDG (unbedingt erforderlich für den gewünschten Dienst).</p>
+
+<h2 class="sec">6 Ihre Rechte</h2>
+<p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch gegen Verarbeitungen auf Grundlage berechtigter Interessen (Art. 21 DSGVO). Wenden Sie sich dazu an den oben genannten Verantwortlichen.</p>
+<p>Sie können sich außerdem bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel bei der für den Verantwortlichen zuständigen Behörde: <span class="todo">Sächsische Datenschutz- und Transparenzbeauftragte, Anschrift ergänzen</span>.</p>
+
+<h2 class="sec">7 Hinweis zu den Ergebnissen</h2>
+<p>Dokumente mit Platzhaltern sind, solange die Schlüsseldatei existiert, <em>pseudonymisiert</em> (Art. 4 Nr. 5 DSGVO) und damit weiterhin personenbezogen. Für den Umgang mit den Ergebnissen und den Schlüsseldateien sind die Nutzerinnen und Nutzer selbst verantwortlich.</p>
+
+<p class="docfoot">SLV Anonymisierer · Datenschutzhinweise · <span class="todo">Stand: …</span></p>
+</main>
+</body>
+</html>
