@@ -44,7 +44,7 @@ npm run preview  # fertige Version mit allen Sicherheits-Headern unter http://lo
 | `src/formats/ocr.js`, `ocr-layout.js` | Texterkennung und Positionsberechnung |
 | `src/keyfile.js` | Schlüsseldatei (PBKDF2 + Fernet, kompatibel mit Python) |
 | `public/` | Logo, Stylesheet, Hilfeseite |
-| `security-headers.json`, `vercel.json` | Sicherheits-Header für Entwicklung und Hosting |
+| `security-headers.json`, `netlify.toml` | Sicherheits-Header für Entwicklung und Hosting (Netlify) |
 
 ## Lizenz
 
